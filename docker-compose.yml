@@ -10,19 +10,30 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: mongo
   node:
-    build:
-      context: .
-      dockerfile: ./node/node.dockerfile
     image: node:latest
     restart: always
     env_file:
      - .env
     container_name: node
     ports:
-      - 3000:8081
+      - 3000:3000
     volumes:
-      - ./src/node:/usr/app
-    working_dir: /usr/app
+      - ./src/node:/usr/api
+    working_dir: /usr/api
     depends_on:
       - mongo
-    command: npm start
+    command: npm run nodemon-start
+  vue:
+    image: node:latest
+    restart: always
+    env_file:
+     - .env
+    container_name: vue
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src/vue:/usr/app
+    working_dir: /usr/app
+    depends_on:
+      - node
+    command: npm run serve
