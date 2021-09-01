@@ -16,4 +16,4 @@ Para usar este projeto, é necessário ter instalado em sua máquina:
 1. Neste arquivo, faça os devidos ajustes na URL de conexão do MongoDB e na URL da API para consumo.
 2. Execute o script de instalação com o comando `./install.sh`.
 
-Após isso o ambiente de desenvolimento estará disponpivel para uso.
+Após isso o ambiente de desenvolimento estará disponível para uso.
